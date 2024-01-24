@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   ListItemText,
@@ -6,27 +6,32 @@ import {
   ListItem,
   List,
 } from './ContactList.styled';
-import { selectFilteredContacts } from '../../redux/selectors';
-import { removeContact } from '../../redux/contactSlice';
+import { selectFilteredContacts } from '../../redux-folder/selectors';
+import { deleteContact, fetchContacts } from '../../redux-folder/contactSlice';
 
 const ContactList = () => {
   const dispatch = useDispatch();
   const filteredContacts = useSelector(selectFilteredContacts);
 
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
+
   const handleDelete = contactId => {
-    dispatch(removeContact(contactId));
+    dispatch(deleteContact(contactId));
   };
 
   return (
     <List>
-      {filteredContacts.map(({ id, name, number }) => (
-        <ListItem key={id}>
-          <ListItemText>
-            {name} - {number}
-          </ListItemText>
-          <DeleteButton onClick={() => handleDelete(id)}>Delete</DeleteButton>
-        </ListItem>
-      ))}
+      {filteredContacts.length > 0 &&
+        filteredContacts.map(({ id, name, number }) => (
+          <ListItem key={id}>
+            <ListItemText>
+              {name} - {number}
+            </ListItemText>
+            <DeleteButton onClick={() => handleDelete(id)}>Delete</DeleteButton>
+          </ListItem>
+        ))}
     </List>
   );
 };
