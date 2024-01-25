@@ -1,47 +1,5 @@
-// import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-// import { addNewContact, deleteContactById, getAllContacts } from 'services/api';
-// import { toast } from 'react-toastify';
-// import 'react-toastify/dist/ReactToastify.css';
-
-// export const fetchContacts = createAsyncThunk(
-//   'contacts/fetchAll',
-//   async (_, thunkApi) => {
-//     try {
-//       const contacts = await getAllContacts();
-//       toast('Your contacts were successfully fetched!');
-//       return contacts;
-//     } catch (error) {
-//       toast.error(`Oops, some error occurred... ${error.message}`);
-//       return thunkApi.rejectWithValue(error.message);
-//     }
-//   }
-// );
-
-// export const addContact = createAsyncThunk(
-//   'contacts/addContact',
-//   async (newContact, thunkApi) => {
-//     try {
-//       const contact = await addNewContact(newContact);
-//       toast('New contact added successfully!');
-//       return contact;
-//     } catch (error) {
-//       return thunkApi.rejectWithValue(error.message);
-//     }
-//   }
-// );
-
-// export const deleteContact = createAsyncThunk(
-//   'contacts/deleteContact',
-//   async (contactId, thunkApi) => {
-//     try {
-//       const deletedContact = await deleteContactById(contactId);
-//       toast('Contact deleted successfully!');
-//       return deletedContact;
-//     } catch (error) {
-//       return thunkApi.rejectWithValue(error.message);
-//     }
-//   }
-// );
+// import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+// import { addContact, deleteContact, fetchContacts } from './operations';
 
 // const initialState = {
 //   items: [],
@@ -107,50 +65,8 @@
 
 // ---------------------------------------------------------
 
-import { createAsyncThunk, createSlice, isAnyOf } from '@reduxjs/toolkit';
-import { addNewContact, deleteContactById, getAllContacts } from 'services/api';
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
-export const fetchContacts = createAsyncThunk(
-  'contacts/fetchAll',
-  async (_, thunkApi) => {
-    try {
-      const contacts = await getAllContacts();
-      toast('Your contacts were successfully fetched!');
-      return contacts;
-    } catch (error) {
-      toast.error(`Oops, some error occurred... ${error.message}`);
-      return thunkApi.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const addContact = createAsyncThunk(
-  'contacts/addContact',
-  async (newContact, thunkApi) => {
-    try {
-      const contact = await addNewContact(newContact);
-      toast('New contact added successfully!');
-      return contact;
-    } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const deleteContact = createAsyncThunk(
-  'contacts/deleteContact',
-  async (contactId, thunkApi) => {
-    try {
-      const deletedContact = await deleteContactById(contactId);
-      toast('Contact deleted successfully!');
-      return deletedContact;
-    } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
-    }
-  }
-);
+import { createSlice, isAnyOf } from '@reduxjs/toolkit';
+import { addContact, deleteContact, fetchContacts } from './operations';
 
 const initialState = {
   items: [],

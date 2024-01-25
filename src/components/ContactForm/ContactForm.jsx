@@ -10,7 +10,7 @@ import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
 import { selectContacts } from 'redux-folder/selectors';
-import { addContact } from 'redux-folder/contactSlice';
+import { addContact } from 'redux-folder/operations';
 
 const contactSchema = Yup.object().shape({
   name: Yup.string()

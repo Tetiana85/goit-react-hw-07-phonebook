@@ -7,7 +7,7 @@ import {
   List,
 } from './ContactList.styled';
 import { selectFilteredContacts } from '../../redux-folder/selectors';
-import { deleteContact, fetchContacts } from '../../redux-folder/contactSlice';
+import { deleteContact, fetchContacts } from 'redux-folder/operations';
 
 const ContactList = () => {
   const dispatch = useDispatch();
